@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Select Object" icon-name="custom:custom25">
+       <div class="slds-p-horizontal--medium">
+          <label class="slds-form-element__label">Objects : </label>
+          <div class="slds-form-element__control">
+             <div class="slds-select_container">
+                <select class="slds-select" onchange={selectOptionChanveValue}>
+                   <option value="">---None---</option>
+                   <template for:each={selectTargetValues.data} for:item="selectOptItem">
+                      <option key={selectOptItem.custFldvalue} value={selectOptItem.custFldvalue}>
+                         {selectOptItem.custFldlabel}
+                      </option>
+                   </template>
+                </select>
+             </div>
+          </div>
+          <br/>
+          <div>
+             <template if:true={showDataTable}>
+                <c-load-fieldset-datatable sfdc-object-api-name={picklistVal} field-set-name={fieldSetName}></c-load-fieldset-datatable>
+             </template>
+          </div>
+       </div>
+    </lightning-card>
+ </template>

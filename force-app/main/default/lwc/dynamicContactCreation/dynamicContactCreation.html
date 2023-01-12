@@ -1,0 +1,50 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:timesheet" alternative-text="Event" size="small"></lightning-icon>
+            &nbsp;Contact Form
+        </h3>
+        <template for:each={itemList} for:item="item" for:index="index">
+            <lightning-record-edit-form key={item.id} object-api-name="Contact">
+                <lightning-messages> </lightning-messages>
+                <lightning-layout multiple-rows>
+                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="3"
+                        padding="around-small">
+                        <lightning-input-field field-name="FirstName" variant="label-stacked" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="3"
+                        padding="around-small">
+                        <lightning-input-field field-name="LastName" variant="label-stacked" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="3"
+                        padding="around-small">
+                        <lightning-input-field class={item.emailKeyId}  field-name="Email" variant="label-stacked" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="3"
+                        padding="around-small">
+                        <lightning-input-field  class={item.accId} field-name="AccountId" variant="label-stacked" required>
+                        </lightning-input-field>
+                    </lightning-layout-item>
+                </lightning-layout>
+
+            </lightning-record-edit-form>
+        </template>
+        <div>
+            <br>
+        </div>
+        <lightning-layout>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" label="Add Row"  title="Add Row1" onclick={addRow} class="slds-m-left_x-small slds-m-right_x-large">
+                </lightning-button>
+                <lightning-button variant="brand" onclick={handleSubmit} name="submit" label="Add" class="slds-m-left_x-small slds-m-right_x-large">
+                </lightning-button>
+            </div>
+        </lightning-layout>
+    </lightning-card>
+    
+        <c-load-updated-records searchkey={refPage}></c-load-updated-records>
+    
+</template>

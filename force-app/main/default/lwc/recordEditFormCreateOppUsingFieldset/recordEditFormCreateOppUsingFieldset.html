@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-m-around_large slds-card">
+        <div class="slds-text-heading_large slds-text-align_center">New Opportunity
+        </div>
+        <lightning-card>
+           <lightning-record-edit-form  object-api-name={objectApiName} onsuccess={handleSuccess}>
+              <div class="slds-grid slds-wrap">
+                 <template if:true={fields}>
+                    <template for:each={fields} for:item="f">
+                       <div key={f} class="slds-col slds-size_1-of-2">
+                          <lightning-input-field field-name={f}> 
+                          </lightning-input-field>
+                       </div>
+                    </template>
+                 </template>
+              </div>
+              <div class="slds-text-align_center">
+                 <lightning-button
+                    variant="brand"
+                    type="submit"
+                    name="save"
+                    label="Save"
+                    ></lightning-button>
+              </div>
+           </lightning-record-edit-form>
+        </lightning-card>
+     </div>
+ </template>
